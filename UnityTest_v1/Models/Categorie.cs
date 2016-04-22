@@ -11,6 +11,7 @@ namespace UnityTest_v1.Models
 {
     using System;
     using System.Collections.Generic;
+    using Newtonsoft.Json; 
     
     public partial class Categorie
     {
@@ -25,8 +26,11 @@ namespace UnityTest_v1.Models
         public string designation { get; set; }
         public string descript { get; set; }
     
+        [JsonIgnore]
         public virtual PorteFeuille PorteFeuille { get; set; }
+         [JsonIgnore]
         public virtual ICollection<Transactions> Transactions { get; set; }
+         [JsonIgnore]
         public virtual ICollection<TransactionPeriodique> TransactionPeriodique { get; set; }
     }
 }

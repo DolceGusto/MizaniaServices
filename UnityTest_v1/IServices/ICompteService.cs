@@ -11,10 +11,10 @@ namespace UnityTest_v1
     {
         Compte GetAccountById(int AccountId);
         IEnumerable<Compte> GetAllAccounts();
-      //  bool AddAccount(Compte compte);
-      //  bool DeleteAccount(int id);
-     //   bool UpdateAccount(Compte compte);
-       /* IEnumerable<Compte> FindAccountsByUserID(int id);*/
+        bool AddAccount(Compte compte);
+        bool DeleteAccount(int id);
+        bool UpdateAccount(Compte compte);
+        IEnumerable<Compte> FindAccountsByUserID(int id);
         bool CreerUtilisateur(Utilisateur user, Compte compte);
        
     }

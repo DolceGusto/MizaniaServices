@@ -19,8 +19,8 @@ namespace UnityTest_v1.Controllers
            _userService = IoC_Config.Container.Resolve<IUserService>();
         }
 
-       /* [HttpGet] /* Retourne tous les utilisateurs */
-       /* public List<Utilisateur> getAllUsers()
+        [HttpGet] /* Retourne tous les utilisateurs */
+        public List<Utilisateur> getAllUsers()
         {
             return _userService.GetAllUsers().ToList();
         }
@@ -32,25 +32,25 @@ namespace UnityTest_v1.Controllers
         }
 
         [HttpGet] /* Retourne des urilisateurs par leurs noms */
-      /*  public List<Utilisateur> getUserByNom(string name)
+        public List<Utilisateur> getUserByNom(string name)
         {
             return _userService.FindByName(name).ToList();
         }
 
         [HttpGet] /* Retourne des urilisateurs par leurs prénoms */
-       /* public List<Utilisateur> getUserByPrenom(string prenom)
+        public List<Utilisateur> getUserByPrenom(string prenom)
         {
             return _userService.FindByPrenom(prenom).ToList();
         }
 
         [HttpGet]  /* Retourne le portefeuille d'un utilisateur */
-        /*public PorteFeuille getUserPortefeuille(int id)
+        public PorteFeuille getUserPortefeuille(int id)
         {
             return _userService.FindPortefeuilleUser(id); 
         }
 
         [HttpGet]  /* Retourne la liste des comptes d'un utilisateur */
-       /* public List<Compte> getUserAccounts(int id)
+        public List<Compte> getUserAccounts(int id)
         {
             return _userService.FindUserAccounts(id).ToList();
         }
@@ -58,7 +58,7 @@ namespace UnityTest_v1.Controllers
 
         
         [HttpPost]  /*Permet d'ajouter un utilisateur */
-       /* public HttpResponseMessage addUser([FromBody]Utilisateur user)
+        public HttpResponseMessage addUser([FromBody]Utilisateur user)
         {
 
             try
@@ -133,7 +133,7 @@ namespace UnityTest_v1.Controllers
 
                 return response;
             }
-        }*/
+        }
 
 
     }

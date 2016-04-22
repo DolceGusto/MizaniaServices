@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using UnityTest_v1.Models; 
+using UnityTest_v1.Models;
+using UnityTest_v1.IServices;
 
 namespace UnityTest_v1
 {
     public class UserService : IUserService
     {
-       // private IUnitOfWork _unitOfWork;
         private IGenericRepository<Utilisateur> _userRepository;
         private IGenericRepository<Compte> _compteRepository;
-
-       public UserService(/*IUnitOfWork unitOfWork,*/ IGenericRepository<Utilisateur> userRepository, IGenericRepository<Compte> compteRepository)
+        
+       public UserService(IGenericRepository<Utilisateur> userRepository, IGenericRepository<Compte> compteRepository)
        {
-          // this._unitOfWork = unitOfWork;
            this._userRepository = userRepository;
            this._compteRepository = compteRepository; 
        }
@@ -29,25 +28,26 @@ namespace UnityTest_v1
            return _userRepository.GetByID(UserId);
        }
         
-     /*  public bool AddUser (Utilisateur user)
+       public bool AddUser (Utilisateur user)
        {
-           _userRepository.Insert(user);
-           if (_unitOfWork.Save() == true) return true;
+           if (_userRepository.Insert(user))
+               return true; 
            else return false; 
+           
         }
 
         public bool DeleteUser(int id)
        {
-           _userRepository.Delete(id); 
-           if (_unitOfWork.Save() == true) return true;
+           if (_userRepository.Delete(id))
+               return true;
            else return false; 
        }
 
         public bool UpdateUser(Utilisateur user)
         {
-            _userRepository.Update(user); 
-            if (_unitOfWork.Save() == true) return true;
-            else return false;
+            if (_userRepository.Update(user))
+                return true;
+            else return false; 
         }
 
         public IEnumerable<Utilisateur> FindByName(string nom)
@@ -69,12 +69,6 @@ namespace UnityTest_v1
         {
             return _compteRepository.FindBy(d => d.idUtilisateur == id).ToList(); 
         }
-
-        
-       public void Dispose()
-       {
-           this._unitOfWork.Dispose();
-       }*/
 
     }
 }

@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using UnityTest_v1.Models; 
+using UnityTest_v1.Models;
+using UnityTest_v1.IServices;
 
 namespace UnityTest_v1
 {
     public class CompteService: ICompteService
     {
-      //  private IUnitOfWork _unitOfWork;
         private IGenericRepository<Utilisateur> _userRepository;
         private IGenericRepository<Compte> _compteRepository;
 
-       public CompteService(/*IUnitOfWork unitOfWork, */IGenericRepository<Utilisateur> userRepository, IGenericRepository<Compte> compteRepository)
+       public CompteService(IGenericRepository<Utilisateur> userRepository, IGenericRepository<Compte> compteRepository)
        {
-          // this._unitOfWork = unitOfWork;
            this._userRepository = userRepository;
            this._compteRepository = compteRepository; 
        }
@@ -36,26 +35,29 @@ namespace UnityTest_v1
        {
            return _compteRepository.GetByID(AccountId);
        }
-
-      /* public bool AddAccount(Compte compte)
+        
+       public bool AddAccount(Compte compte)
        {
-           _compteRepository.Insert(compte);
-           if (_unitOfWork.Save() == true) return true;
+           if (_compteRepository.Insert(compte))
+               return true;
            else return false;
        }
+         
 
        public bool DeleteAccount(int id)
        {
-           _compteRepository.Delete(id);
-           if (_unitOfWork.Save() == true) return true;
-           else return false;
+           if (_compteRepository.Delete(id))
+               return true; 
+           else return false; 
+          
        }
+        
 
        public bool UpdateAccount(Compte compte)
        {
-           _compteRepository.Update(compte);
-           if (_unitOfWork.Save() == true) return true;
-           else return false;
+           if (_compteRepository.Update(compte))
+               return true;
+           else return false; 
        }
 
        public IEnumerable<Compte> FindAccountsByUserID(int id)
@@ -64,9 +66,6 @@ namespace UnityTest_v1
        }
 
        
-       public void Dispose()
-       {
-           this._unitOfWork.Dispose();
-       }*/
+       
     }
 }

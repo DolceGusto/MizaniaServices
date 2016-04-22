@@ -12,9 +12,9 @@ namespace UnityTest_v1
         IEnumerable<TEntity> GetAll(); 
         TEntity GetByID(object id);
         bool Insert(TEntity entity);
-        void Delete(object id);
+        bool Delete(object id);
         void Delete(TEntity entityToDelete);
-        void Update(TEntity entityToUpdate);
+        bool Update(TEntity entityToUpdate);
         IEnumerable<TEntity> FindBy(Expression<Func<TEntity, bool>> predicate);
     }
 }

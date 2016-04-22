@@ -38,16 +38,15 @@
                     <span class="arrow open"></span>
                 </a>
             </li>
-            <li class=" active open">
+            <li>
                 <a href="javascript;">
                     <i class="icon-wallet"></i>
                     <span class="title">Gestion des comptes</span>
                     <span class="arrow "></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class=" active open">
+                    <li>
                         <a href="#Accounts">
-                            <span class="selected"></span>
                             <i class="fa fa-list"></i>
                             Mes comptes
                         </a>
@@ -113,15 +112,16 @@
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="#CategoriesList">
+            <li class=" active open">
+                <a href="javascript:;">
                     <i class="icon-puzzle"></i>
                     <span class="title"> Gestion des catégories de transactions</span>
-                    <span class="arrow "></span>
+                    <span class="arrow open "></span>
                 </a>
                 <ul class="sub-menu">
-                    <li>
+                    <li class="active open ">
                         <a href="#CategoriesList">
+                            <span class="selected"></span>
                             <i class="fa fa-list"></i>
                             Liste des catégories
                         </a>
@@ -206,11 +206,11 @@
                             <i class="icon-wallet"></i>
                         </div>
                         <div class="details">
-                            <div class="number" ng-model="Accounts">
-                                {{Accounts.length}}
+                            <div class="number" ng-model="Categories">
+                                {{Categories.length}}
                             </div>
                             <div class="desc">
-                                Nombre de mes comptes
+                                Les catégories de transactions
                             </div>
                         </div>
                         <a class="more">
@@ -258,13 +258,13 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        Account ID
+                                        Categorie ID
                                     </th>
                                     <th>
                                         Designation
                                     </th>
                                     <th>
-                                        Solde
+                                        Description
                                     </th>
                                     <th>
                                         Modifier
@@ -275,22 +275,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="account in Accounts">
+                                <tr ng-repeat="categorie in Categories">
                                     <td>
-                                        {{account.id}}
+                                        {{categorie.id}}
                                     </td>
                                     <td>
-                                        {{account.designation}}
+                                        {{categorie.designation}}
                                     </td>
                                     <td>
-                                        {{account.solde}}
+                                        {{categorie.descript}}
                                     </td>
                                     <td>
-                                        <a href="#Accounts" class="btn btn-sm green-turquoise filter-cancel"><i class="fa fa-edit"></i> Modifier</a>
+                                        <a href="#Categories" class="btn btn-sm green-turquoise filter-cancel"><i class="fa fa-edit"></i> Modifier</a>
 
                                     </td>
                                     <td>
-                                        <a href="#Accounts" ng-click="deleteAccount(account)" class="btn btn-sm red filter-cancel"><i class="fa fa-times"></i> Supprimer</a>
+                                        <a href="#CategoriesList" ng-click="deleteCategorie(categorie)" class="btn btn-sm red filter-cancel"><i class="fa fa-times"></i> Supprimer</a>
 
                                     </td>
                                 </tr>

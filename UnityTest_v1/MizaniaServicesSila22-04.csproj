@@ -185,7 +185,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="CompteService.cs" />
+    <Compile Include="Controllers\CategorieController.cs" />
+    <Compile Include="IServices\ICategorieService.cs" />
+    <Compile Include="Services\CategorieService.cs" />
+    <Compile Include="Services\CompteService.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CompteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -195,10 +198,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ICompteService.cs" />
+    <Compile Include="IServices\ICompteService.cs" />
     <Compile Include="IGenericRepository.cs" />
     <Compile Include="IoC_Config.cs" />
-    <Compile Include="IUserService.cs" />
+    <Compile Include="IServices\IUserService.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categorie.cs">
       <DependentUpon>ModelContext.tt</DependentUpon>
@@ -246,7 +249,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="UserService.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AjouterCompte.html" />
@@ -256,13 +259,15 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Controllers\AccountBDController.js" />
-    <Content Include="Controllers\UserBDController.js" />
+    <Content Include="ControllerJS\AccountBDController.js" />
+    <Content Include="ControllerJS\CategorieBDController.js" />
+    <Content Include="ControllerJS\UserBDController.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="layout.html" />
+    <Content Include="ListeCategories.html" />
     <Content Include="ListeComptes.html" />
     <Content Include="ListeUsers.html" />
     <Content Include="Scripts\angular-animate.js" />
@@ -1078,8 +1083,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Services\accountsService.js" />
-    <Content Include="Services\usersService.js" />
+    <Content Include="ServicesJS\accountsService.js" />
+    <Content Include="ServicesJS\CategoriesService.js" />
+    <Content Include="ServicesJS\usersService.js" />
     <Content Include="Template\assets\admin\layout\css\custom.css" />
     <Content Include="Template\assets\admin\layout\css\layout.css" />
     <Content Include="Template\assets\admin\layout\css\themes\blue.css" />
@@ -1262,6 +1268,23 @@
     <Content Include="Template\assets\global\img\remove-icon-small.png" />
     <Content Include="Template\assets\global\img\syncfusion-icons-white.png" />
     <Content Include="Template\assets\global\img\syncfusion-icons.png" />
+    <Content Include="Template\assets\global\plugins\excanvas.min.js" />
+    <Content Include="Template\assets\global\plugins\holder.js" />
+    <Content Include="Template\assets\global\plugins\jquery-migrate.min.js" />
+    <Content Include="Template\assets\global\plugins\jquery.blockui.min.js" />
+    <Content Include="Template\assets\global\plugins\jquery.cokie.min.js" />
+    <Content Include="Template\assets\global\plugins\jquery.easing.js" />
+    <Content Include="Template\assets\global\plugins\jquery.input-ip-address-control-1.0.min.js" />
+    <Content Include="Template\assets\global\plugins\jquery.min.js" />
+    <Content Include="Template\assets\global\plugins\jquery.mockjax.js" />
+    <Content Include="Template\assets\global\plugins\jquery.parallax.js" />
+    <Content Include="Template\assets\global\plugins\jquery.pulsate.min.js" />
+    <Content Include="Template\assets\global\plugins\jquery.scrollTo.min.js" />
+    <Content Include="Template\assets\global\plugins\jquery.sparkline.min.js" />
+    <Content Include="Template\assets\global\plugins\moment.min.js" />
+    <Content Include="Template\assets\global\plugins\respond.min.js" />
+    <Content Include="Template\assets\global\scripts\datatable.js" />
+    <Content Include="Template\assets\global\scripts\metronic.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1298,11 +1321,10 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Template\assets\global\plugins\jquery.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Template\assets\admin\pages\media\" />
-    <Folder Include="Template\assets\global\plugins\" />
-    <Folder Include="Template\assets\global\scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
