@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="101af9895e7740ea901648092b2d3081" Name="Diagram1">
+        <EntityTypeShape EntityType="DbContextModel.Categorie" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbContextModel.Compte" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbContextModel.PorteFeuille" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbContextModel.Privilege" Width="1.5" PointX="6" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbContextModel.PrivilegeUtilisateur" Width="1.5" PointX="8.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbContextModel.TransactionPeriodique" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbContextModel.Transactions" Width="1.5" PointX="10.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbContextModel.Transfert" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbContextModel.Utilisateur" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="DbContextModel.FK__Categorie__idPor__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="DbContextModel.FK__Transacti__idCat__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="DbContextModel.FK__Transacti__idCat__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="DbContextModel.FK__Compte__idUtilis__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="DbContextModel.FK__Transacti__idCom__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="DbContextModel.FK__Transacti__idCom__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="DbContextModel.FK__Transfert__idCom__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="DbContextModel.FK__Transfert__idCom__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="DbContextModel.FK__Utilisate__idPor__145C0A3F" ManuallyRouted="false" />
+        <AssociationConnector Association="DbContextModel.FK__Privilege__idPri__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="DbContextModel.FK__Privilege__idUti__1A14E395" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

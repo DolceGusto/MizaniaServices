@@ -1,0 +1,744 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DbContextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categorie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPorteFeuille" Type="int" Nullable="false" />
+          <Property Name="designation" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="descript" Type="varchar" MaxLength="140" />
+        </EntityType>
+        <EntityType Name="Compte">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUtilisateur" Type="int" Nullable="false" />
+          <Property Name="solde" Type="float" Nullable="false" />
+          <Property Name="designation" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="descript" Type="varchar" MaxLength="140" />
+        </EntityType>
+        <EntityType Name="PorteFeuille">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="designation" Type="varchar" MaxLength="70" />
+          <Property Name="dateCreation" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Privilege">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="designation" Type="varchar" MaxLength="70" />
+        </EntityType>
+        <EntityType Name="PrivilegeUtilisateur">
+          <Key>
+            <PropertyRef Name="idUtilisateur" />
+            <PropertyRef Name="idPrivilege" />
+          </Key>
+          <Property Name="idUtilisateur" Type="int" Nullable="false" />
+          <Property Name="idPrivilege" Type="int" Nullable="false" />
+          <Property Name="dateCreation" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TransactionPeriodique">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="idCompte" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCompte" Type="int" Nullable="false" />
+          <Property Name="idCategorie" Type="int" Nullable="false" />
+          <Property Name="montant" Type="float" Nullable="false" />
+          <Property Name="dateCreation" Type="datetime" />
+          <Property Name="frequence" Type="int" Nullable="false" />
+          <Property Name="designation" Type="varchar" MaxLength="70" />
+          <Property Name="typeTransact" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transactions">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="idCompte" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCompte" Type="int" Nullable="false" />
+          <Property Name="idCategorie" Type="int" Nullable="false" />
+          <Property Name="montant" Type="float" Nullable="false" />
+          <Property Name="dateCreation" Type="datetime" />
+          <Property Name="designation" Type="varchar" MaxLength="70" />
+          <Property Name="typeTransact" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transfert">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="idCompteExpediteur" />
+            <PropertyRef Name="idCompteRecepteur" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCompteExpediteur" Type="int" Nullable="false" />
+          <Property Name="idCompteRecepteur" Type="int" Nullable="false" />
+          <Property Name="montant" Type="float" Nullable="false" />
+          <Property Name="dateCreation" Type="datetime" Nullable="false" />
+          <Property Name="designation" Type="varchar" MaxLength="70" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Utilisateur">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPorteFeuille" Type="int" Nullable="false" />
+          <Property Name="nomDeCompte" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="prenom" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="roleUtilisateur" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Categorie__idPor__20C1E124">
+          <End Role="PorteFeuille" Type="Self.PorteFeuille" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PorteFeuille">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Categorie">
+              <PropertyRef Name="idPorteFeuille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Compte__idUtilis__1DE57479">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Compte" Type="Self.Compte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Compte">
+              <PropertyRef Name="idUtilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Privilege__idPri__1B0907CE">
+          <End Role="Privilege" Type="Self.Privilege" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PrivilegeUtilisateur" Type="Self.PrivilegeUtilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privilege">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PrivilegeUtilisateur">
+              <PropertyRef Name="idPrivilege" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Privilege__idUti__1A14E395">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PrivilegeUtilisateur" Type="Self.PrivilegeUtilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PrivilegeUtilisateur">
+              <PropertyRef Name="idUtilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__idCat__267ABA7A">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="idCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__idCat__2C3393D0">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="TransactionPeriodique" Type="Self.TransactionPeriodique" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TransactionPeriodique">
+              <PropertyRef Name="idCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__idCom__25869641">
+          <End Role="Compte" Type="Self.Compte" Multiplicity="1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compte">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="idCompte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__idCom__2B3F6F97">
+          <End Role="Compte" Type="Self.Compte" Multiplicity="1" />
+          <End Role="TransactionPeriodique" Type="Self.TransactionPeriodique" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compte">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TransactionPeriodique">
+              <PropertyRef Name="idCompte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transfert__idCom__300424B4">
+          <End Role="Compte" Type="Self.Compte" Multiplicity="1" />
+          <End Role="Transfert" Type="Self.Transfert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compte">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transfert">
+              <PropertyRef Name="idCompteExpediteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transfert__idCom__30F848ED">
+          <End Role="Compte" Type="Self.Compte" Multiplicity="1" />
+          <End Role="Transfert" Type="Self.Transfert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compte">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transfert">
+              <PropertyRef Name="idCompteRecepteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Utilisate__idPor__145C0A3F">
+          <End Role="PorteFeuille" Type="Self.PorteFeuille" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PorteFeuille">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Utilisateur">
+              <PropertyRef Name="idPorteFeuille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbContextModelStoreContainer">
+          <EntitySet Name="Categorie" EntityType="Self.Categorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Compte" EntityType="Self.Compte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PorteFeuille" EntityType="Self.PorteFeuille" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Privilege" EntityType="Self.Privilege" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrivilegeUtilisateur" EntityType="Self.PrivilegeUtilisateur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionPeriodique" EntityType="Self.TransactionPeriodique" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transfert" EntityType="Self.Transfert" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Categorie__idPor__20C1E124" Association="Self.FK__Categorie__idPor__20C1E124">
+            <End Role="PorteFeuille" EntitySet="PorteFeuille" />
+            <End Role="Categorie" EntitySet="Categorie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Compte__idUtilis__1DE57479" Association="Self.FK__Compte__idUtilis__1DE57479">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Compte" EntitySet="Compte" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Privilege__idPri__1B0907CE" Association="Self.FK__Privilege__idPri__1B0907CE">
+            <End Role="Privilege" EntitySet="Privilege" />
+            <End Role="PrivilegeUtilisateur" EntitySet="PrivilegeUtilisateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Privilege__idUti__1A14E395" Association="Self.FK__Privilege__idUti__1A14E395">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="PrivilegeUtilisateur" EntitySet="PrivilegeUtilisateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__idCat__267ABA7A" Association="Self.FK__Transacti__idCat__267ABA7A">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__idCat__2C3393D0" Association="Self.FK__Transacti__idCat__2C3393D0">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="TransactionPeriodique" EntitySet="TransactionPeriodique" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__idCom__25869641" Association="Self.FK__Transacti__idCom__25869641">
+            <End Role="Compte" EntitySet="Compte" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__idCom__2B3F6F97" Association="Self.FK__Transacti__idCom__2B3F6F97">
+            <End Role="Compte" EntitySet="Compte" />
+            <End Role="TransactionPeriodique" EntitySet="TransactionPeriodique" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transfert__idCom__300424B4" Association="Self.FK__Transfert__idCom__300424B4">
+            <End Role="Compte" EntitySet="Compte" />
+            <End Role="Transfert" EntitySet="Transfert" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transfert__idCom__30F848ED" Association="Self.FK__Transfert__idCom__30F848ED">
+            <End Role="Compte" EntitySet="Compte" />
+            <End Role="Transfert" EntitySet="Transfert" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Utilisate__idPor__145C0A3F" Association="Self.FK__Utilisate__idPor__145C0A3F">
+            <End Role="PorteFeuille" EntitySet="PorteFeuille" />
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbContextModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categorie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPorteFeuille" Type="Int32" Nullable="false" />
+          <Property Name="designation" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descript" Type="String" MaxLength="140" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PorteFeuille" Relationship="Self.FK__Categorie__idPor__20C1E124" FromRole="Categorie" ToRole="PorteFeuille" />
+          <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__idCat__267ABA7A" FromRole="Categorie" ToRole="Transactions" />
+          <NavigationProperty Name="TransactionPeriodique" Relationship="Self.FK__Transacti__idCat__2C3393D0" FromRole="Categorie" ToRole="TransactionPeriodique" />
+        </EntityType>
+        <EntityType Name="Compte">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUtilisateur" Type="Int32" Nullable="false" />
+          <Property Name="solde" Type="Double" Nullable="false" />
+          <Property Name="designation" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descript" Type="String" MaxLength="140" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Compte__idUtilis__1DE57479" FromRole="Compte" ToRole="Utilisateur" />
+          <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__idCom__25869641" FromRole="Compte" ToRole="Transactions" />
+          <NavigationProperty Name="TransactionPeriodique" Relationship="Self.FK__Transacti__idCom__2B3F6F97" FromRole="Compte" ToRole="TransactionPeriodique" />
+          <NavigationProperty Name="Transfert" Relationship="Self.FK__Transfert__idCom__300424B4" FromRole="Compte" ToRole="Transfert" />
+          <NavigationProperty Name="Transfert1" Relationship="Self.FK__Transfert__idCom__30F848ED" FromRole="Compte" ToRole="Transfert" />
+        </EntityType>
+        <EntityType Name="PorteFeuille">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="designation" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="dateCreation" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Categorie" Relationship="Self.FK__Categorie__idPor__20C1E124" FromRole="PorteFeuille" ToRole="Categorie" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Utilisate__idPor__145C0A3F" FromRole="PorteFeuille" ToRole="Utilisateur" />
+        </EntityType>
+        <EntityType Name="Privilege">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="designation" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PrivilegeUtilisateur" Relationship="Self.FK__Privilege__idPri__1B0907CE" FromRole="Privilege" ToRole="PrivilegeUtilisateur" />
+        </EntityType>
+        <EntityType Name="PrivilegeUtilisateur">
+          <Key>
+            <PropertyRef Name="idUtilisateur" />
+            <PropertyRef Name="idPrivilege" />
+          </Key>
+          <Property Name="idUtilisateur" Type="Int32" Nullable="false" />
+          <Property Name="idPrivilege" Type="Int32" Nullable="false" />
+          <Property Name="dateCreation" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Privilege" Relationship="Self.FK__Privilege__idPri__1B0907CE" FromRole="PrivilegeUtilisateur" ToRole="Privilege" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK__Privilege__idUti__1A14E395" FromRole="PrivilegeUtilisateur" ToRole="Utilisateur" />
+        </EntityType>
+        <EntityType Name="TransactionPeriodique">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="idCompte" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCompte" Type="Int32" Nullable="false" />
+          <Property Name="idCategorie" Type="Int32" Nullable="false" />
+          <Property Name="montant" Type="Double" Nullable="false" />
+          <Property Name="dateCreation" Type="DateTime" Precision="3" />
+          <Property Name="frequence" Type="Int32" Nullable="false" />
+          <Property Name="designation" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="typeTransact" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Categorie" Relationship="Self.FK__Transacti__idCat__2C3393D0" FromRole="TransactionPeriodique" ToRole="Categorie" />
+          <NavigationProperty Name="Compte" Relationship="Self.FK__Transacti__idCom__2B3F6F97" FromRole="TransactionPeriodique" ToRole="Compte" />
+        </EntityType>
+        <EntityType Name="Transactions">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="idCompte" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCompte" Type="Int32" Nullable="false" />
+          <Property Name="idCategorie" Type="Int32" Nullable="false" />
+          <Property Name="montant" Type="Double" Nullable="false" />
+          <Property Name="dateCreation" Type="DateTime" Precision="3" />
+          <Property Name="designation" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="typeTransact" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Categorie" Relationship="Self.FK__Transacti__idCat__267ABA7A" FromRole="Transactions" ToRole="Categorie" />
+          <NavigationProperty Name="Compte" Relationship="Self.FK__Transacti__idCom__25869641" FromRole="Transactions" ToRole="Compte" />
+        </EntityType>
+        <EntityType Name="Transfert">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="idCompteExpediteur" />
+            <PropertyRef Name="idCompteRecepteur" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCompteExpediteur" Type="Int32" Nullable="false" />
+          <Property Name="idCompteRecepteur" Type="Int32" Nullable="false" />
+          <Property Name="montant" Type="Double" Nullable="false" />
+          <Property Name="dateCreation" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="designation" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Compte" Relationship="Self.FK__Transfert__idCom__300424B4" FromRole="Transfert" ToRole="Compte" />
+          <NavigationProperty Name="Compte1" Relationship="Self.FK__Transfert__idCom__30F848ED" FromRole="Transfert" ToRole="Compte" />
+        </EntityType>
+        <EntityType Name="Utilisateur">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPorteFeuille" Type="Int32" Nullable="false" />
+          <Property Name="nomDeCompte" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prenom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="roleUtilisateur" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Compte" Relationship="Self.FK__Compte__idUtilis__1DE57479" FromRole="Utilisateur" ToRole="Compte" />
+          <NavigationProperty Name="PorteFeuille" Relationship="Self.FK__Utilisate__idPor__145C0A3F" FromRole="Utilisateur" ToRole="PorteFeuille" />
+          <NavigationProperty Name="PrivilegeUtilisateur" Relationship="Self.FK__Privilege__idUti__1A14E395" FromRole="Utilisateur" ToRole="PrivilegeUtilisateur" />
+        </EntityType>
+        <Association Name="FK__Categorie__idPor__20C1E124">
+          <End Role="PorteFeuille" Type="Self.PorteFeuille" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PorteFeuille">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Categorie">
+              <PropertyRef Name="idPorteFeuille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__idCat__267ABA7A">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="idCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__idCat__2C3393D0">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="TransactionPeriodique" Type="Self.TransactionPeriodique" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TransactionPeriodique">
+              <PropertyRef Name="idCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Compte__idUtilis__1DE57479">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Compte" Type="Self.Compte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Compte">
+              <PropertyRef Name="idUtilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__idCom__25869641">
+          <End Role="Compte" Type="Self.Compte" Multiplicity="1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compte">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="idCompte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__idCom__2B3F6F97">
+          <End Role="Compte" Type="Self.Compte" Multiplicity="1" />
+          <End Role="TransactionPeriodique" Type="Self.TransactionPeriodique" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compte">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TransactionPeriodique">
+              <PropertyRef Name="idCompte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transfert__idCom__300424B4">
+          <End Role="Compte" Type="Self.Compte" Multiplicity="1" />
+          <End Role="Transfert" Type="Self.Transfert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compte">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transfert">
+              <PropertyRef Name="idCompteExpediteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transfert__idCom__30F848ED">
+          <End Role="Compte" Type="Self.Compte" Multiplicity="1" />
+          <End Role="Transfert" Type="Self.Transfert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compte">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Transfert">
+              <PropertyRef Name="idCompteRecepteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Utilisate__idPor__145C0A3F">
+          <End Role="PorteFeuille" Type="Self.PorteFeuille" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PorteFeuille">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Utilisateur">
+              <PropertyRef Name="idPorteFeuille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Privilege__idPri__1B0907CE">
+          <End Role="Privilege" Type="Self.Privilege" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PrivilegeUtilisateur" Type="Self.PrivilegeUtilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privilege">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PrivilegeUtilisateur">
+              <PropertyRef Name="idPrivilege" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Privilege__idUti__1A14E395">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PrivilegeUtilisateur" Type="Self.PrivilegeUtilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PrivilegeUtilisateur">
+              <PropertyRef Name="idUtilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbContextEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categorie" EntityType="Self.Categorie" />
+          <EntitySet Name="Compte" EntityType="Self.Compte" />
+          <EntitySet Name="PorteFeuille" EntityType="Self.PorteFeuille" />
+          <EntitySet Name="Privilege" EntityType="Self.Privilege" />
+          <EntitySet Name="PrivilegeUtilisateur" EntityType="Self.PrivilegeUtilisateur" />
+          <EntitySet Name="TransactionPeriodique" EntityType="Self.TransactionPeriodique" />
+          <EntitySet Name="Transactions" EntityType="Self.Transactions" />
+          <EntitySet Name="Transfert" EntityType="Self.Transfert" />
+          <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" />
+          <AssociationSet Name="FK__Categorie__idPor__20C1E124" Association="Self.FK__Categorie__idPor__20C1E124">
+            <End Role="PorteFeuille" EntitySet="PorteFeuille" />
+            <End Role="Categorie" EntitySet="Categorie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__idCat__267ABA7A" Association="Self.FK__Transacti__idCat__267ABA7A">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__idCat__2C3393D0" Association="Self.FK__Transacti__idCat__2C3393D0">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="TransactionPeriodique" EntitySet="TransactionPeriodique" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Compte__idUtilis__1DE57479" Association="Self.FK__Compte__idUtilis__1DE57479">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Compte" EntitySet="Compte" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__idCom__25869641" Association="Self.FK__Transacti__idCom__25869641">
+            <End Role="Compte" EntitySet="Compte" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__idCom__2B3F6F97" Association="Self.FK__Transacti__idCom__2B3F6F97">
+            <End Role="Compte" EntitySet="Compte" />
+            <End Role="TransactionPeriodique" EntitySet="TransactionPeriodique" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transfert__idCom__300424B4" Association="Self.FK__Transfert__idCom__300424B4">
+            <End Role="Compte" EntitySet="Compte" />
+            <End Role="Transfert" EntitySet="Transfert" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transfert__idCom__30F848ED" Association="Self.FK__Transfert__idCom__30F848ED">
+            <End Role="Compte" EntitySet="Compte" />
+            <End Role="Transfert" EntitySet="Transfert" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Utilisate__idPor__145C0A3F" Association="Self.FK__Utilisate__idPor__145C0A3F">
+            <End Role="PorteFeuille" EntitySet="PorteFeuille" />
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Privilege__idPri__1B0907CE" Association="Self.FK__Privilege__idPri__1B0907CE">
+            <End Role="Privilege" EntitySet="Privilege" />
+            <End Role="PrivilegeUtilisateur" EntitySet="PrivilegeUtilisateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Privilege__idUti__1A14E395" Association="Self.FK__Privilege__idUti__1A14E395">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="PrivilegeUtilisateur" EntitySet="PrivilegeUtilisateur" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbContextModelStoreContainer" CdmEntityContainer="DbContextEntities">
+          <EntitySetMapping Name="Categorie">
+            <EntityTypeMapping TypeName="DbContextModel.Categorie">
+              <MappingFragment StoreEntitySet="Categorie">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idPorteFeuille" ColumnName="idPorteFeuille" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+                <ScalarProperty Name="descript" ColumnName="descript" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Compte">
+            <EntityTypeMapping TypeName="DbContextModel.Compte">
+              <MappingFragment StoreEntitySet="Compte">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idUtilisateur" ColumnName="idUtilisateur" />
+                <ScalarProperty Name="solde" ColumnName="solde" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+                <ScalarProperty Name="descript" ColumnName="descript" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PorteFeuille">
+            <EntityTypeMapping TypeName="DbContextModel.PorteFeuille">
+              <MappingFragment StoreEntitySet="PorteFeuille">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+                <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Privilege">
+            <EntityTypeMapping TypeName="DbContextModel.Privilege">
+              <MappingFragment StoreEntitySet="Privilege">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrivilegeUtilisateur">
+            <EntityTypeMapping TypeName="DbContextModel.PrivilegeUtilisateur">
+              <MappingFragment StoreEntitySet="PrivilegeUtilisateur">
+                <ScalarProperty Name="idUtilisateur" ColumnName="idUtilisateur" />
+                <ScalarProperty Name="idPrivilege" ColumnName="idPrivilege" />
+                <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionPeriodique">
+            <EntityTypeMapping TypeName="DbContextModel.TransactionPeriodique">
+              <MappingFragment StoreEntitySet="TransactionPeriodique">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idCompte" ColumnName="idCompte" />
+                <ScalarProperty Name="idCategorie" ColumnName="idCategorie" />
+                <ScalarProperty Name="montant" ColumnName="montant" />
+                <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+                <ScalarProperty Name="frequence" ColumnName="frequence" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+                <ScalarProperty Name="typeTransact" ColumnName="typeTransact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transactions">
+            <EntityTypeMapping TypeName="DbContextModel.Transactions">
+              <MappingFragment StoreEntitySet="Transactions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idCompte" ColumnName="idCompte" />
+                <ScalarProperty Name="idCategorie" ColumnName="idCategorie" />
+                <ScalarProperty Name="montant" ColumnName="montant" />
+                <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+                <ScalarProperty Name="typeTransact" ColumnName="typeTransact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transfert">
+            <EntityTypeMapping TypeName="DbContextModel.Transfert">
+              <MappingFragment StoreEntitySet="Transfert">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idCompteExpediteur" ColumnName="idCompteExpediteur" />
+                <ScalarProperty Name="idCompteRecepteur" ColumnName="idCompteRecepteur" />
+                <ScalarProperty Name="montant" ColumnName="montant" />
+                <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilisateur">
+            <EntityTypeMapping TypeName="DbContextModel.Utilisateur">
+              <MappingFragment StoreEntitySet="Utilisateur">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idPorteFeuille" ColumnName="idPorteFeuille" />
+                <ScalarProperty Name="nomDeCompte" ColumnName="nomDeCompte" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="roleUtilisateur" ColumnName="roleUtilisateur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
