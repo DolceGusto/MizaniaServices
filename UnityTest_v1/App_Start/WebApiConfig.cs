@@ -198,7 +198,68 @@ namespace UnityTest_v1
                 }
              );
 
-                        
+
+
+
+            config.Routes.MapHttpRoute(
+              name: "GetAllCategories",
+              routeTemplate: "api/Categorie/getAll/",
+              defaults: new
+              {
+                  controller = "Categorie",
+                  action = "getAllCategories"
+              }
+           );
+
+            config.Routes.MapHttpRoute(
+               name: "GetCategorie",
+               routeTemplate: "api/Categorie/getOneCategorie/{id}",
+               defaults: new
+               {
+                   controller = "Categorie",
+                   action = "getOneCategorie"
+
+               },
+               constraints: new { id = @"\d+" }
+
+            );
+
+            config.Routes.MapHttpRoute(
+                 name: "PostCategorie",
+                 routeTemplate: "api/Categorie/addCategorie",
+                 defaults: new
+                 {
+                     controller = "Categorie",
+                     action = "addCategorie"
+                 }
+              );
+
+            config.Routes.MapHttpRoute(
+                  name: "DeleteCategorie",
+                  routeTemplate: "api/Categorie/deleteCategorie/{id}",
+                  defaults: new
+                  {
+                      controller = "Categorie",
+                      action = "deleteCategorie",
+
+                  },
+                   constraints: new
+                   {
+                       id = @"\d+",
+                   }
+               );
+
+            config.Routes.MapHttpRoute(
+                 name: "PutCategorie",
+                 routeTemplate: "api/Categorie/updateCategorie/{id}",
+                 defaults: new
+                 {
+                     controller = "Categorie",
+                     action = "updateAccount"
+                 },
+              constraints: new { id = @"\d+" }
+              );
+
         }
     }
 }
