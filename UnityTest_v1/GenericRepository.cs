@@ -14,9 +14,8 @@ namespace UnityTest_v1
         private DbContextEntities _context;
         private DbSet<TEntity> _DbSet;
    
-        public GenericRepository(/*IUnitOfWork unitOfWork*/)
+        public GenericRepository()
         {
-           // this._unitOfWork = unitOfWork;
             this._context = new DbContextEntities();
             this._DbSet = _context.Set<TEntity>();
         }
@@ -42,10 +41,13 @@ namespace UnityTest_v1
 
         }
 
-        public void Delete(object id)
+        public bool Delete(object id)
         {
             TEntity entityToDelete = _DbSet.Find(id);
             Delete(entityToDelete);
+            if (_context.SaveChanges() == 1)
+                return true;
+            else return false;
         }
        
         public void Delete(TEntity entityToDelete)
@@ -57,10 +59,13 @@ namespace UnityTest_v1
             _DbSet.Remove(entityToDelete);
         }
 
-        public void Update(TEntity entityToUpdate)
+        public bool Update(TEntity entityToUpdate)
         {
             _DbSet.Attach(entityToUpdate);
             _context.Entry(entityToUpdate).State = EntityState.Modified;
+            if (_context.SaveChanges() == 1)
+                return true;
+            else return false;
         }
 
         public IEnumerable<TEntity> FindBy(Expression<Func<TEntity, bool>> predicate)
