@@ -128,7 +128,7 @@ namespace UnityTest_v1.Controllers
                 Compte compte = _compteService.GetAccountById(account.id);
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, compte);
                 response.StatusCode = HttpStatusCode.OK;
-                String uri = Url.Link("GetUser", new { id = compte.id });
+                String uri = Url.Link("GetAccount", new { id = compte.id });
                 response.Headers.Location = new Uri(uri);
 
                 return response;

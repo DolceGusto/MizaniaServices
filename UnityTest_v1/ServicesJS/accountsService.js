@@ -31,7 +31,7 @@
         };
 
         var singleAccount = function (id) {
-            return $http.get("http://localhost:26309/api/Compte/getAccountById/" + id)
+            return $http.get("http://localhost:26309/api/Compte/getOneAccount/" + id)
                         .then(function (serviceResp) {
                             return serviceResp.data;
                         });

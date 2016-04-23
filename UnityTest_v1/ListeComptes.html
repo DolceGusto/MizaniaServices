@@ -39,10 +39,10 @@
                 </a>
             </li>
             <li class=" active open">
-                <a href="javascript;">
+                <a href="#Accounts">
                     <i class="icon-wallet"></i>
                     <span class="title">Gestion des comptes</span>
-                    <span class="arrow "></span>
+                    <span class="arrow open"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class=" active open">
@@ -94,7 +94,7 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:;">
+                <a href="">
                     <i class="fa fa-repeat"></i>
                     <span class="title">Gestion des transactions périodiques</span>
                     <span class="arrow "></span>
@@ -117,7 +117,7 @@
                 <a href="#CategoriesList">
                     <i class="icon-puzzle"></i>
                     <span class="title"> Gestion des catégories de transactions</span>
-                    <span class="arrow "></span>
+                    <span class="arrow open "></span>
                 </a>
                 <ul class="sub-menu">
                     <li>
@@ -127,21 +127,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="ecommerce_orders_view.html">
-                            <i class="fa fa-edit"></i>
-                            Modifier une catégorie
-                        </a>
-                    </li>
-                    <li>
                         <a href="ecommerce_orders.html">
                             <i class="fa fa-plus-circle"></i>
                             Ajouter une catégorie
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ecommerce_products.html">
-                            <i class="fa fa-minus-circle"></i>
-                            Supprimer une catégorie
                         </a>
                     </li>
                 </ul>
@@ -264,6 +252,9 @@
                                         Designation
                                     </th>
                                     <th>
+                                        Description
+                                    </th>
+                                    <th>
                                         Solde
                                     </th>
                                     <th>
@@ -283,10 +274,13 @@
                                         {{account.designation}}
                                     </td>
                                     <td>
-                                        {{account.solde}}
+                                        {{account.descript}}
                                     </td>
                                     <td>
-                                        <a href="#Accounts" class="btn btn-sm green-turquoise filter-cancel"><i class="fa fa-edit"></i> Modifier</a>
+                                        {{account.solde}} DA
+                                    </td>
+                                    <td>
+                                        <a href="#ModifyAccount/{{account.id}}"  class=" btn btn-sm green-turquoise filter-cancel"><i class="fa fa-edit"></i> Modifier</a>
 
                                     </td>
                                     <td>

@@ -252,6 +252,7 @@
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AjouterCategorie.html" />
     <Content Include="AjouterCompte.html" />
     <Content Include="App_Data\DbContext.mdf" />
     <Content Include="App_Data\DbContext_log.ldf">
@@ -262,6 +263,7 @@
     <Content Include="ControllerJS\AccountBDController.js" />
     <Content Include="ControllerJS\CategorieBDController.js" />
     <Content Include="ControllerJS\UserBDController.js" />
+    <Content Include="EditCompte.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

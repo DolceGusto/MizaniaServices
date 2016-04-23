@@ -6,13 +6,14 @@ using System.Web;
 using System.Linq.Expressions; 
 using UnityTest_v1.Models; 
 
+
 namespace UnityTest_v1
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
        
-        private DbContextEntities _context;
-        private DbSet<TEntity> _DbSet;
+        public DbContextEntities _context;
+        public DbSet<TEntity> _DbSet;
    
         public GenericRepository()
         {
