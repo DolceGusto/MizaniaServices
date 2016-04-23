@@ -25,6 +25,12 @@ app.config(function ($routeProvider) {
             templateUrl: "ListeComptes.html",
             controller: "AccountBDController"
         })
+        .when("/CategoriesList", {
+            templateUrl: "ListeCategories.html",
+            controller: "CategorieBDController"
+        })
 
+
+        
     .otherwise({ redirectTo: "/Home" })
 });
