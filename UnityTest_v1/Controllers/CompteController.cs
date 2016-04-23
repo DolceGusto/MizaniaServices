@@ -35,8 +35,8 @@ namespace UnityTest_v1.Controllers
         }
 
        
-     //   [HttpPost]  /*Permet d'ajouter un utilisateur */
-       /* public HttpResponseMessage addAccount([FromBody]Compte account)
+        [HttpPost]  /*Permet d'ajouter un utilisateur */
+        public HttpResponseMessage addAccount([FromBody]Compte account)
         {
 
             try
@@ -61,9 +61,9 @@ namespace UnityTest_v1.Controllers
             }
 
         }
-        */
+        
 
-       /* [HttpDelete]
+        [HttpDelete]
         public HttpResponseMessage deleteAccount(int id)
         {
             try
@@ -83,7 +83,7 @@ namespace UnityTest_v1.Controllers
 
                 return response;
             }
-        }*/
+        }
 
         [HttpPost]  /*Permet d'ajouter un utilisateur */
         public HttpResponseMessage addUserV(Newtonsoft.Json.Linq.JArray data)
@@ -102,10 +102,7 @@ namespace UnityTest_v1.Controllers
                     throw new Exception("ajout de l'instance de l'utilisateur non effecuté " + compte.designation);
                 }
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
-                //response.StatusCode = HttpStatusCode.Created;
-                // String uri = Url.Link("GetUser", new { id = user.id });
-                // response.Headers.Location = new Uri(uri);
-
+                
                 return response;
 
             }
@@ -117,7 +114,7 @@ namespace UnityTest_v1.Controllers
             }
         }
 
-       /* [HttpPut]
+        [HttpPut]
         public HttpResponseMessage updateAccount(Compte account)
         {
             try
@@ -144,6 +141,6 @@ namespace UnityTest_v1.Controllers
 
                 return response;
             }
-        }*/
+        }
     }
 }
