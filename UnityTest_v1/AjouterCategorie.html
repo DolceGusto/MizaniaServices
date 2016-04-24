@@ -38,8 +38,8 @@
                     <span class="arrow open"></span>
                 </a>
             </li>
-            <li class=" active open">
-                <a href="javascript;">
+            <li>
+                <a href="#Accounts">
                     <i class="icon-wallet"></i>
                     <span class="title">Gestion des comptes</span>
                     <span class="arrow "></span>
@@ -51,9 +51,8 @@
                             Mes comptes
                         </a>
                     </li>
-                    <li class=" active open">
+                    <li>
                         <a href="#NewAccount">
-                            <span class="selected"></span>
                             <i class="fa fa-plus-circle"></i>
                             Ajouter un compte
                         </a>
@@ -113,11 +112,11 @@
                     </li>
                 </ul>
             </li>
-            <li>
+            <li class="active open" >
                 <a href="#CategoriesList">
                     <i class="icon-puzzle"></i>
                     <span class="title"> Gestion des catégories de transactions</span>
-                    <span class="arrow "></span>
+                    <span class="arrow open"></span>
                 </a>
                 <ul class="sub-menu">
                     <li>
@@ -127,11 +126,16 @@
                         </a>
                     </li>
                     <li>
+                       
+                    </li>
+                    <li class="active open">
                         <a href="#NewCategorie">
+                            <span class="selected"></span>
                             <i class="fa fa-plus-circle"></i>
                             Ajouter une catégorie
                         </a>
                     </li>
+                   
                 </ul>
             </li>
             <li>
@@ -208,7 +212,7 @@
         <!-- END PAGE HEADER-->
         <!-- BEGIN PAGE CONTENT-->
         <h3 class="page-title">
-            ➕ Ajouter un compte
+            ➕ Ajouter une catégorie de transaction
         </h3>
         <div class="row">
             <div class="col-md-12">
@@ -216,7 +220,7 @@
                 <div class="portlet box blue-chambray">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="fa fa-plus-circle"></i>Nouveau compte
+                            <i class="fa fa-plus-circle"></i>Nouvelle catégorie de transaction
                         </div>
                         <div class="tools">
                             <a href="javascript:;" class="collapse">
@@ -228,88 +232,32 @@
                     <div class="portlet-body form">
                         <form action="#" id="form-username" class="form-horizontal form-bordered">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Nom du compte</label>
-                                <div class="col-sm-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="icon-wallet"></i>
-                                        </span>
-                                        <input type="text" ng-model="account.designation" placeholder="Designation" class=" form-control" />
-                                    </div>
-                                    <p class="help-block">
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Description du compte</label>
+                                <label class="col-sm-3 control-label">Designation </label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon">
                                             <i class="fa fa-edit"></i>
                                         </span>
-                                        <input type="text" ng-model="account.descript" placeholder="Description" class="form-control" />
+                                        <input type="text" ng-model="categorie.designation" placeholder="Description" class="form-control" />
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Montant du compte</label>
+                                <label class="col-sm-3 control-label">Description</label>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon">
-                                            <i class="fa fa-money"></i>
+                                            <i class="fa fa-edit"></i>
                                         </span>
-                                        <input type="text" ng-model="account.solde" placeholder="Solde du compte" class="form-control" />
+                                        <input type="text" ng-model="categorie.descript" placeholder="Solde du compte" class="form-control" />
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Nom</label>
-                                <div class="col-sm-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="fa fa-money"></i>
-                                        </span>
-                                        <input type="text" ng-model="user.nom" placeholder="Nom" class="form-control" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Nom de compte</label>
-                                <div class="col-sm-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="fa fa-money"></i>
-                                        </span>
-                                        <input type="text" ng-model="user.nomDeCompte" placeholder="Nom de Compte" class="form-control" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Prénom</label>
-                                <div class="col-sm-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="fa fa-money"></i>
-                                        </span>
-                                        <input type="text" ng-model="user.prenom" placeholder="Prénom" class="form-control" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Role</label>
-                                <div class="col-sm-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="fa fa-money"></i>
-                                        </span>
-                                        <input type="text" ng-model="user.roleUtilisateur" placeholder="Role" class="form-control" />
-                                    </div>
-                                </div>
-                            </div>
+                        
                             <div class="form-actions">
                                 <div class="row">
                                     <div class="col-md-offset-3 col-md-9">
-                                        <a ng-click="InsertAccount(user,account)" class="btn green-haze"><i class="fa fa-check"></i> Ajouter</a>
+                                        <a href="#CategoriesList" ng-click="InsertCategorie(categorie)" class="btn green-haze"><i class="fa fa-check"></i> Ajouter</a>
                                         <button type="button" class="btn default">Annuler</button>
                                     </div>
                                 </div>
