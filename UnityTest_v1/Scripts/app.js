@@ -9,9 +9,9 @@ app.config(function ($routeProvider) {
             templateUrl: "ListeUsers.html",
             controller: "UserBDController"
         })
-        .when("/ModifyUser/:id", {
-            templateUrl: "UserUpdate.html",
-            controller: "UserBDController"
+        .when("/ModifyAccount/:id", {
+            templateUrl: "EditCompte.html",
+            controller: "AccountBDController"
         })
         .when("/NewAccount", {
             templateUrl: "AjouterCompte.html",
@@ -27,6 +27,10 @@ app.config(function ($routeProvider) {
         })
         .when("/CategoriesList", {
             templateUrl: "ListeCategories.html",
+            controller: "CategorieBDController"
+        })
+        .when("/NewCategorie", {
+            templateUrl: "AjouterCategorie.html",
             controller: "CategorieBDController"
         })
 
