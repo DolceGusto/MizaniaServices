@@ -24,7 +24,15 @@ namespace UnityTest_v1
             Container.RegisterType<IGenericRepository<Categorie>, GenericRepository<Categorie>>();
             Container.RegisterType<IUserService, UserService>();
             Container.RegisterType<ICompteService, CompteService>();
+
             Container.RegisterType<ICategorieService, CategorieService>();
+            Container.RegisterType<IGenericRepository<Transactions>, TransactionRepository>();
+            Container.RegisterType<IGenericRepository<Transfert>, TransfertRepository>();
+
+            Container.RegisterType<ITransfertService, TransfertService>();
+
+            Container.RegisterType<ITransactionService, TransactionsService>();
+
         }
 
         public static IUnityContainer Container { get; private set; }

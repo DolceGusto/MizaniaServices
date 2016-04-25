@@ -12,13 +12,19 @@ namespace UnityTest_v1
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
        
-        public DbContextEntities _context;
-        public DbSet<TEntity> _DbSet;
+        private  DbContextEntities _context;
+        private DbSet<TEntity> _DbSet;
    
         public GenericRepository()
-        {
+        {   
             this._context = new DbContextEntities();
             this._DbSet = _context.Set<TEntity>();
+        }
+
+        public GenericRepository(DbContextEntities dbContext, DbSet<TEntity> dbSet)
+        {
+            this._context = dbContext;
+            this._DbSet = dbSet;
         }
 
         public IEnumerable<TEntity> GetAll()
@@ -44,6 +50,7 @@ namespace UnityTest_v1
 
         public bool Delete(object id)
         {
+            
             TEntity entityToDelete = _DbSet.Find(id);
             Delete(entityToDelete);
             if (_context.SaveChanges() == 1)
@@ -53,6 +60,7 @@ namespace UnityTest_v1
        
         public void Delete(TEntity entityToDelete)
         {
+            
             if (_context.Entry(entityToDelete).State == EntityState.Detached)
             {
                 _DbSet.Attach(entityToDelete);

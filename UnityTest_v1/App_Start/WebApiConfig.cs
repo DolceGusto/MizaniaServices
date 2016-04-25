@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using UnityTest_v1.App_Start.RouteAnnuaire;
 
 namespace UnityTest_v1
 {
@@ -113,20 +114,6 @@ namespace UnityTest_v1
              },
                constraints: new { id = @"\d+" }
           );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             config.Routes.MapHttpRoute(
               name: "GetAllAccounts",
@@ -259,6 +246,9 @@ namespace UnityTest_v1
                  },
               constraints: new { id = @"\d+" }
               );
+
+            RouteTransfert.addRoutesTransferts(config);
+            RouteTransactions.addRoutesTransactions(config);
 
         }
     }
