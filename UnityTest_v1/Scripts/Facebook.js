@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿function InitialiseFacebook(appId) {
 
     window.fbAsyncInit = function () {
@@ -51,3 +52,6 @@
     }(document));
 
 }
+=======
+﻿
+>>>>>>> 5597514c2bf9093f555916b1ed1b3425ad0b830d

@@ -1,3 +1,4 @@
+<<<<<<< HEAD:UnityTest_v1/ServicesJS/accountsService.js
 ﻿(function () {
     var accountsService = function ($http, $q, $log) {
 
@@ -38,6 +39,48 @@
         };
 
         var ModifyAccount = function (account) {
+=======
+﻿(function () {
+    var accountsService = function ($http, $q, $log) {
+
+
+        var Accounts = function () {
+            return $http.get("http://localhost:26309/api/Compte/getAll/")
+                        .then(function (serviceResp) {
+                            return serviceResp.data;
+                        });
+        };
+
+        var Users = function () {
+           
+            return $http.get("http://localhost:26309/api/User/getAll/")
+                        .then(function (serviceResp) {
+                            return serviceResp.data;
+                        });
+        };
+
+     
+
+        var InsertAccount = function (user, account) {
+            var strFinal = "[" + JSON.stringify(user) + "," +
+                       JSON.stringify(account) + "]";
+           
+            return $http.post("http://localhost:26309/api/Compte/addUserV", strFinal)
+            .then(function () {
+                $log.info("Insert Successful");
+                return;
+            });
+        };
+
+        var singleAccount = function (id) {
+            return $http.get("http://localhost:26309/api/Compte/getOneAccount/" + id)
+                        .then(function (serviceResp) {
+                            return serviceResp.data;
+                        });
+        };
+
+        var ModifyAccount = function (account) {
+>>>>>>> 5597514c2bf9093f555916b1ed1b3425ad0b830d:UnityTest_v1/ServicesJS/accountsService.js
             return $http.put("http://localhost:26309/api/Compte/updateAccount/" + account.id, account)
             .then(function (result) {
                 $log.info("Update Successful");

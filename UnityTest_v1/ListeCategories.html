@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<!-- BEGIN SIDEBAR --><div class="page-sidebar-wrapper">
     <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
     <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
@@ -276,4 +277,284 @@
         <!-- END PAGE CONTENT -->
     </div>
 </div>
+=======
+﻿<!-- BEGIN SIDEBAR --><div class="page-sidebar-wrapper">
+    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+    <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+    <div class="page-sidebar navbar-collapse collapse">
+        <!-- BEGIN SIDEBAR MENU -->
+        <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+        <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+        <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+        <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+        <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+        <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+            <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+            <li class="sidebar-toggler-wrapper">
+                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                <div class="sidebar-toggler">
+                </div>
+                <!-- END SIDEBAR TOGGLER BUTTON -->
+            </li>
+            <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
+            <li class="sidebar-search-wrapper">
+                <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+                <!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
+                <!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
+                <form class="sidebar-search " action="extra_search.html" method="POST">
+                    <a href="javascript:;" class="remove">
+                        <i class="icon-close"></i>
+                    </a>
+
+                </form>
+                <!-- END RESPONSIVE QUICK SEARCH FORM -->
+            </li>
+            <li class="start">
+                <a href="#Users">
+                    <i class="icon-home"></i>
+                    <span class="title">Utilisateurs</span>
+
+                    <span class="arrow open"></span>
+                </a>
+            </li>
+            <li>
+                <a href="#Accounts">
+                    <i class="icon-wallet"></i>
+                    <span class="title">Gestion des comptes</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="#Accounts">
+                            <i class="fa fa-list"></i>
+                            Mes comptes
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#NewAccount">
+                            <i class="fa fa-plus-circle"></i>
+                            Ajouter un compte
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="fa fa-money"></i>
+                    <span class="title">Gestion des transactions</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="ListeDepenses.html">
+                            <i class="fa fa-shopping-cart"></i>
+                            Mes dépenses
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ListeRevenus.html">
+                            <i class="fa fa-arrow-down"></i>
+                            Mes revenus
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ListeTransferts.html">
+                            <i class="fa fa-exchange"></i>
+                            Mes transferts
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ecommerce_orders.html">
+                            <i class="fa fa-plus-circle"></i>
+                            Ajouter une transaction
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="fa fa-repeat"></i>
+                    <span class="title">Gestion des transactions périodiques</span>
+                    <span class="arrow "></span>
+                </a><ul class="sub-menu">
+                    <li>
+                        <a href="ecommerce_index.html">
+                            <i class="fa fa-repeat"></i>
+                            Mes transaction périodiques
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ecommerce_index.html">
+                            <i class="fa fa-plus-circle"></i>
+                            ajouter une transaction périodique
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class=" active open">
+                <a href="#CategoriesList">
+                    <i class="icon-puzzle"></i>
+                    <span class="title"> Gestion des catégories de transactions</span>
+                    <span class="arrow open "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="active open ">
+                        <a href="#CategoriesList">
+                            <span class="selected"></span>
+                            <i class="fa fa-list"></i>
+                            Liste des catégories
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#NewCategorie">
+                            
+                            <i class="fa fa-plus-circle"></i>
+                            Ajouter une catégorie
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="icon-paper-plane"></i>
+                    <span class="title"> Gestion des privilèges</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="ecommerce_orders_view.html">
+                            <i class="fa fa-edit"></i>
+                            Modifier les privilèges des utilisateurs
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ecommerce_orders.html">
+                            <i class="fa fa-plus-circle"></i>
+                            Ajouter un privilège
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- END ANGULARJS LINK -->
+            <li class="heading">
+                <h3 class="uppercase">Autres utilisateurs</h3>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="fa fa-users"></i>
+                    <span class="title">Membres de la familles</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="ecommerce_index.html">
+                            <i class="fa fa-list"></i>
+                            Liste des utilisateurs
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- END SIDEBAR MENU -->
+    </div>
+</div>
+<!-- BEGIN CONTENT -->
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <!-- BEGIN PAGE CONTENT-->
+        <h3 class="page-title">
+            👛 Catégories de transactions
+        </h3>
+        <div class="row">
+            <center>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="dashboard-stat green-haze">
+                        <div class="visual">
+                            <i class="icon-wallet"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number" ng-model="Categories">
+                                {{Categories.length}}
+                            </div>
+                            <div class="desc">
+                                Les catégories de transactions
+                            </div>
+                        </div>
+                        <a class="more">
+                        </a>
+                    </div>
+                </div>
+            </center>
+            <div class="col-md-12">
+                <div class="portlet-title">
+
+                </div>
+                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                <div class="portlet box blue-chambray">
+
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-list"></i>Mes comptes
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse">
+                            </a>
+                            <a href="javascript:;" class="remove">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Categorie ID
+                                    </th>
+                                    <th>
+                                        Designation
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>
+                                    <th>
+                                        Modifier
+                                    </th>
+                                    <th>
+                                        Supprimer
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="categorie in Categories">
+                                    <td>
+                                        {{categorie.id}}
+                                    </td>
+                                    <td>
+                                        {{categorie.designation}}
+                                    </td>
+                                    <td>
+                                        {{categorie.descript}}
+                                    </td>
+                                    <td>
+                                        <a href="#Categories" class="btn btn-sm green-turquoise filter-cancel"><i class="fa fa-edit"></i> Modifier</a>
+
+                                    </td>
+                                    <td>
+                                        <a href="#CategoriesList" ng-click="deleteCategorie(categorie)" class="btn btn-sm red filter-cancel"><i class="fa fa-times"></i> Supprimer</a>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE PORTLET-->
+            </div>
+        </div>
+        <!-- END PAGE CONTENT -->
+    </div>
+</div>
+>>>>>>> 5597514c2bf9093f555916b1ed1b3425ad0b830d
 <!-- END CONTENT -->
