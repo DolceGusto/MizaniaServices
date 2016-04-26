@@ -12,6 +12,7 @@ namespace UnityTest_v1
         private DbContextEntities dbContext;
         private DbSet<Transfert> dbSetTransfert;
         private DbSet<Compte> dbSetCompte;
+        
 
 
         public TransfertRepository(){
@@ -38,7 +39,7 @@ namespace UnityTest_v1
         public Transfert GetByID(object id)
         {
             int identifiant = (int) id ;
-
+                
             return dbSetTransfert.FirstOrDefault(t => t.id == identifiant);
         }
 
@@ -91,32 +92,29 @@ namespace UnityTest_v1
             Compte ancienCompteRecepteur = dbSetCompte.Find(ancienTransfert.idCompteRecepteur);
             Compte nouveauCompteExpediteur = dbSetCompte.Find(entityToUpdate.idCompteExpediteur);
             Compte nouveauCompteRecepteur = dbSetCompte.Find(entityToUpdate.idCompteRecepteur);
-            int majAttendu = 0; //compte le nombre de mis à jour attendues
 
-            if(ancienCompteExpediteur.id != nouveauCompteExpediteur.id){ //changement dans l'expediteur 
+            int majAttendu = 1; //compte le nombre de mis à jour attendues(celle du transfert par defaut)
+                                // celle des deux compte en cas d'un changment dans le montant
 
-                ancienCompteExpediteur.solde += ancienTransfert.montant;
-                nouveauCompteExpediteur.solde -= entityToUpdate.montant;
+            ancienCompteExpediteur.solde += ancienTransfert.montant;
+            nouveauCompteExpediteur.solde -= entityToUpdate.montant;
+            ancienCompteRecepteur.solde -= ancienTransfert.montant;
+            nouveauCompteRecepteur.solde += entityToUpdate.montant;
+            
+            ancienTransfert.idCompteExpediteur = entityToUpdate.idCompteExpediteur;
+            ancienTransfert.idCompteRecepteur = entityToUpdate.idCompteRecepteur;
+            ancienTransfert.montant = entityToUpdate.montant;
+            ancienTransfert.designation = entityToUpdate.designation;
+            ancienTransfert.dateCreation = ancienTransfert.dateCreation;
+
+            if (ancienCompteExpediteur.id != nouveauCompteExpediteur.id)
+                majAttendu += 2;
+            if (ancienCompteRecepteur.id != nouveauCompteRecepteur.id)
+                majAttendu += 2;
+            if (ancienCompteRecepteur.id == nouveauCompteRecepteur.id &&
+               ancienCompteExpediteur.id == nouveauCompteExpediteur.id)
                 majAttendu += 2;
 
-
-            }
-            if(ancienCompteRecepteur.id != nouveauCompteRecepteur.id){ //changment dans le recepteur 
-
-                ancienCompteRecepteur.solde -= ancienTransfert.montant;
-                nouveauCompteRecepteur.solde += entityToUpdate.montant;
-                majAttendu += 2;
-
-            }
-            else if(entityToUpdate.montant - ancienTransfert.montant > double.Epsilon){ // changement uniquement dans le montant du transfert  
-
-                double deltaSolde = entityToUpdate.montant - ancienTransfert.montant;
-                nouveauCompteExpediteur.solde -= deltaSolde;
-                nouveauCompteRecepteur.solde += deltaSolde;
-                majAttendu += 2;
-            }
-
-            majAttendu += 1; // ajout de l'entite transfert 
             if (dbContext.SaveChanges() == majAttendu)
             {
                 return true;
