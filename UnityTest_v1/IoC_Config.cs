@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,39 +39,4 @@ namespace UnityTest_v1
 
     
     }
-=======
-﻿using Microsoft.Practices.Unity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using UnityTest_v1.IServices;
-using UnityTest_v1.Models;
-using UnityTest_v1.Services; 
-
-namespace UnityTest_v1
-{
-    public class IoC_Config
-    {
-        static IoC_Config()
-        {
-            Configure();
-        }
-
-        public static void Configure()
-        {
-            Container = new UnityContainer();
-            Container.RegisterType<IGenericRepository<Utilisateur>, GenericRepository<Utilisateur>>();
-            Container.RegisterType<IGenericRepository<Compte>, GenericRepository<Compte>>();
-            Container.RegisterType<IGenericRepository<Categorie>, GenericRepository<Categorie>>();
-            Container.RegisterType<IUserService, UserService>();
-            Container.RegisterType<ICompteService, CompteService>();
-            Container.RegisterType<ICategorieService, CategorieService>();
-        }
-
-        public static IUnityContainer Container { get; private set; }
-
-    
-    }
->>>>>>> 5597514c2bf9093f555916b1ed1b3425ad0b830d
 }
